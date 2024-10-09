@@ -1,6 +1,7 @@
 package razas;
 
 public class Wrives extends Unidad {
+	//
 	private int ataquesRealizados = 0;
 	
 	public Wrives () {
