@@ -1,11 +1,24 @@
 package razas;
 
-public class Unidad {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hola Mundo");
-
+public abstract class Unidad {
+	protected int saludMaxima,
+				salud,
+				rangoMin,
+				rangoMax,
+				daño;
+	protected boolean desmayado = false;
+	
+	public void recibirDaño (int daño) {
+		if(salud > daño)
+			salud -= daño;
+		else
+			desmayado = true;
 	}
-
+	
+	public abstract void descansar();
+	
+	public void atacar (Unidad otro) {
+		otro.recibirDaño(daño);
+	}
 }
+
