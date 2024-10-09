@@ -5,12 +5,12 @@ public abstract class Unidad {
 				salud,
 				rangoMin,
 				rangoMax,
-				daño;
+				danio;
 	protected boolean desmayado = false;
 	
-	public void recibirDaño (int daño) {
-		if(salud > daño)
-			salud -= daño;
+	public void anio (int danio) {
+		if(salud > danio)
+			salud -= danio;
 		else
 			desmayado = true;
 	}
@@ -18,7 +18,11 @@ public abstract class Unidad {
 	public abstract void descansar();
 	
 	public void atacar (Unidad otro) {
-		otro.recibirDaño(daño);
+		otro.recibirDanio(danio);
+	}
+
+	public void recibirDanio(int danio) {
+		
 	}
 }
 

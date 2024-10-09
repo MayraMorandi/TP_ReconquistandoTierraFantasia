@@ -8,12 +8,12 @@ public class Reralopes extends Unidad {
 		salud = 53;
 		rangoMin = 5;
 		rangoMax = 46;
-		daño = 27;
+		danio = 27;
 	}
 	
 	@Override
-	public void recibirDaño (int daño) {
-		super.recibirDaño(daño);
+	public void recibirDanio (int danio) {
+		super.recibirDanio(danio);
 		cantAtaquePotenciado = 0;
 	}
 	
@@ -25,9 +25,9 @@ public class Reralopes extends Unidad {
 	@Override
 	public void atacar (Unidad otro) {
 		if(cantAtaquePotenciado == 0)
-			otro.recibirDaño(daño);
+			otro.recibirDanio(danio);
 		else {
-			otro.recibirDaño(daño*2);
+			otro.recibirDanio(danio*2);
 			cantAtaquePotenciado--;
 		}
 	}

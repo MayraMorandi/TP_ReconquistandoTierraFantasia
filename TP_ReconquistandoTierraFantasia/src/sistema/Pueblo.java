@@ -1,13 +1,14 @@
 package sistema;
 
-public class Resultado {
-	
-	
+public class Pueblo {
+
+	private int id;
 	private int cantidadGuerreros;
 	private String raza;
 	private String condicion;
 	
-	public Resultado(int cantidadGuerreros, String raza, String condicion) {
+	public Pueblo(int id, int cantidadGuerreros, String raza, String condicion) {
+		this.id = id;
 		this.cantidadGuerreros = cantidadGuerreros;
 		this.raza = raza;
 		this.condicion = condicion;
@@ -15,19 +16,27 @@ public class Resultado {
 	
 	
 	// Getters
+	public int getId() {
+		return id;
+	}
+	
     public int getCantidadGuerreros() {
         return cantidadGuerreros;
     }
 
-    public int getRaza() {
+    public String getRaza() {
         return raza;
     }
 
-    public int getCondicion() {
+    public String getCondicion() {
         return condicion;
     }
 
     // Setters
+    public void setId(int id) {
+		this.id = id;
+	}
+    
     public void setCantidadGuerreros(int cantidadGuerreros) {
         this.cantidadGuerreros = cantidadGuerreros;
     }
@@ -36,7 +45,7 @@ public class Resultado {
         this.raza = raza;
     }
 
-    public void setCondicion(int condicion) {
+    public void setCondicion(String condicion) {
         this.condicion = condicion;
     }
 }

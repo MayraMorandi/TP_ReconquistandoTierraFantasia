@@ -8,7 +8,7 @@ public class Radaiteran extends Unidad {
 		salud = 36;
 		rangoMin = 17;
 		rangoMax = 41;
-		daño = 56;
+		danio = 56;
 	}
 	
 	@Override
@@ -16,7 +16,7 @@ public class Radaiteran extends Unidad {
 	
 	@Override
 	public void atacar (Unidad otro) {
-		otro.recibirDaño(daño + 3 * cantAtaques);
+		otro.recibirDanio(danio + 3 * cantAtaques);
 		cantAtaques++;
 	}
 }

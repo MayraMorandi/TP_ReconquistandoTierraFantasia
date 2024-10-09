@@ -9,12 +9,12 @@ public class Wrives extends Unidad {
 		salud = 108;
 		rangoMin = 14;
 		rangoMax = 28;
-		daño = 113;
+		danio = 113;
 	}
 	
 	@Override
-	public void recibirDaño (int daño) {
-		super.recibirDaño(daño*2);
+	public void recibirDanio (int danio) {
+		super.recibirDanio(danio*2);
 	}
 	
 	@Override
@@ -27,9 +27,9 @@ public class Wrives extends Unidad {
 	public void atacar (Unidad otro) {
 		if(salud < saludMaxima) {
 			if(ataquesRealizados < 2)
-				otro.recibirDaño(daño);
+				otro.recibirDanio(danio);
 			else {
-				otro.recibirDaño(daño*2);
+				otro.recibirDanio(danio*2);
 				ataquesRealizados = 0;
 			}
 			
