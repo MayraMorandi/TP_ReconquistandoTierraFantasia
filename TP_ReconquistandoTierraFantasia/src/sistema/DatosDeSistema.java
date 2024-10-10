@@ -5,15 +5,13 @@ import java.util.List;
 public class DatosDeSistema {
 	
 	private int[][] mapa;
-	private int cantidadPueblos;
 	private List<Pueblo> pueblos;
 	private int puebloInicial;
 	private int puebloFinal;
 	
 	
-	public DatosDeSistema(int[][] mapa, int cantidadPueblos, List<Pueblo> pueblos, int puebloInicial, int puebloFinal) {
+	public DatosDeSistema(int[][] mapa, List<Pueblo> pueblos, int puebloInicial, int puebloFinal) {
 		this.mapa = mapa;
-		this.cantidadPueblos = cantidadPueblos;
 		this.pueblos = pueblos;
 		this.puebloInicial = puebloInicial;
 		this.puebloFinal = puebloFinal;
@@ -22,11 +20,6 @@ public class DatosDeSistema {
 
 	public int[][] getMapa() {
 		return mapa;
-	}
-
-
-	public int getCantidadPueblos() {
-		return cantidadPueblos;
 	}
 
 
@@ -53,7 +46,4 @@ public class DatosDeSistema {
 	public void setPuebloFinal(int puebloFinal) {
 		this.puebloFinal = puebloFinal;
 	}
-	
-	
-
 }

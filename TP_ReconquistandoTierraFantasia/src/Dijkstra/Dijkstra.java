@@ -33,10 +33,10 @@ public class Dijkstra {
 		
 		//Mientras no esten todos visitados
 		while(!todosVisitados(visitados)) {
-			// Encontrar el nodo no visitado con la distancia m�nima
+			// Encontrar el nodo no visitado con la distancia minima
             int u = minDistancia(distancias, visitados);
 
-            // Si no se encuentra ning�n nodo alcanzable, romper el ciclo
+            // Si no se encuentra ningun nodo alcanzable, romper el ciclo
             if (u == -1) {
                 break; // Esto ocurre cuando no hay m�s nodos alcanzables
             }
@@ -46,7 +46,7 @@ public class Dijkstra {
             
             int otraDistancia;
             
-         // Actualizar las distancias de los vecinos no visitados
+            // Actualizar las distancias de los vecinos no visitados
             for (int v = 0; v < tamano; v++) {
             	if(adyacencias[u][v] != 0) {
             		otraDistancia = distancias[u] + adyacencias[u][v];
@@ -76,7 +76,7 @@ public class Dijkstra {
 		return true;
 	}
 	
-	// M�todo auxiliar para encontrar el nodo no visitado con la distancia m�nima
+	// Metodo auxiliar para encontrar el nodo no visitado con la distancia minima
     private static int minDistancia(int[] distancias, boolean[] visitado) {
         int min = Integer.MAX_VALUE, minIndex = -1;
 
@@ -89,17 +89,17 @@ public class Dijkstra {
         return minIndex;
     }
     
-    // M�todo para validar si una matriz es cuadrada
+    // Metodo para validar si una matriz es cuadrada
     private static boolean esCuadrada(int[][] matriz) {
         // Verificar si la matriz no es nula y tiene al menos una fila
         if (matriz == null || matriz.length == 0) {
             return false;
         }
 
-        // Obtener el n�mero de filas
+        // Obtener el numero de filas
         int numFilas = matriz.length;
 
-        // Verificar que cada fila tenga la misma cantidad de columnas que el n�mero de filas
+        // Verificar que cada fila tenga la misma cantidad de columnas que el numero de filas
         for (int[] fila : matriz) {
             if (fila.length != numFilas) {
                 return false; // La matriz no es cuadrada
@@ -109,6 +109,7 @@ public class Dijkstra {
         return true; // La matriz es cuadrada
     }
     
+    //devuelve el camino desde el nodo inicial hasta el nodo final mandado
     public static int[] devolverCamino(int[] v, int nodo) {
     	int[] camino;
     	int[] aux = new int[v.length];

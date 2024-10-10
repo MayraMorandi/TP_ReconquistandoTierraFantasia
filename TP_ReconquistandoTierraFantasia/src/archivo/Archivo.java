@@ -42,20 +42,19 @@ public class Archivo {
 
 				// Leer el pueblo inicial y final
 				String[] datosInicioFinal = lector.nextLine().split(" -> ");
-				puebloInicial = Integer.parseInt(datosInicioFinal[0]);
-				puebloFinal = Integer.parseInt(datosInicioFinal[1]);
+				puebloInicial = Integer.parseInt(datosInicioFinal[0]) - 1;// Restar 1 para convertir a indice de matriz 
+				puebloFinal = Integer.parseInt(datosInicioFinal[1]) - 1;
 
 				matrizAdyacencia = new int[cantidadDePueblos][cantidadDePueblos];
 
-				// Inicializar la matriz de adyacencia con un valor que represente "sin
-				// conexi�n"
+				// Inicializar la matriz de adyacencia con un valor que represente "sin conexion"
 				
 
 				// Leer las distancias entre pueblos y llenar la matriz de adyacencia
 				while (lector.hasNextLine()) {
 					String[] datosCamino = lector.nextLine().split(" ");
-					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a �ndice de matriz (0
-																		// basado)
+					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a indice de matriz 
+																		// (0 basado)
 					int destino = Integer.parseInt(datosCamino[1]) - 1;
 					int distancia = Integer.parseInt(datosCamino[2]);
 
@@ -64,7 +63,7 @@ public class Archivo {
 					matrizAdyacencia[destino][origen] = distancia; // Si es un grafo no dirigido, esto es necesario
 				}
 				
-				DatosDeSistema datos = new DatosDeSistema(matrizAdyacencia, cantidadDePueblos, pueblos, puebloInicial - 1, puebloFinal - 1);
+				DatosDeSistema datos = new DatosDeSistema(matrizAdyacencia, pueblos, puebloInicial, puebloFinal);
 				return datos;
 
 			} catch (FileNotFoundException e) {

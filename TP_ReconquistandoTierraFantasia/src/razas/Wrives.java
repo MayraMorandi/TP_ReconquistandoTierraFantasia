@@ -33,12 +33,11 @@ public class Wrives extends Unidad {
 		if (fueAtacado) {
 				if (ataquesRealizados < 2) {
 					otro.recibirAtaque(ataque);
+					ataquesRealizados++;
 				} else {
 					otro.recibirAtaque(ataque * 2);
 					ataquesRealizados = 0;
 				}
-
-				ataquesRealizados++;
 		}
 	}
 }

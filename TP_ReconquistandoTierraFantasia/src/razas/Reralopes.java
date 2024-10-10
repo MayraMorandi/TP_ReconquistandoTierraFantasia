@@ -36,6 +36,9 @@ public class Reralopes extends Unidad {
         // Si el n�mero es 0 o 1, el ataque falla (2 de cada 4 veces)
         if (resultado == 0 || resultado == 1) {
             // El ataque falla
+        	if(cantAtaquesPotenciados != 0) {
+        		cantAtaquesPotenciados--;
+        	}
         } else {
             // El ataque acierta
         	if(cantAtaquesPotenciados == 0)
