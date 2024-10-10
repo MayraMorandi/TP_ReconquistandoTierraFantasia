@@ -4,20 +4,22 @@ public class Nortaichian extends Unidad {
 	private int enfurecido = 0,
 				estadoPiedra = 0;
 	
-	public Nortaichian () {
+	public Nortaichian (boolean aliado) {
+		nombre = "Nortaichan";
+		metodoAtaque = "Arco";
 		saludMaxima = 66;
 		salud = 66;
 		rangoMin = 16;
 		rangoMax = 22;
-		danio = 18;
+		ataque = 18;
 	}
 
 	@Override
-	public void recibirDanio (int danio) {
+	public void recibirAtaque (int danio) {
 		if(estadoPiedra == 0)
-			super.recibirDanio(danio);
+			super.recibirAtaque(danio);
 		else {
-			super.recibirDanio(danio/2);
+			super.recibirAtaque(danio/2);
 			estadoPiedra--;
 		}
 			
@@ -34,9 +36,9 @@ public class Nortaichian extends Unidad {
 	public void atacar (Unidad otro) {
 		if(estadoPiedra == 0) {
 			if(enfurecido == 0)
-				otro.recibirDanio(danio);
+				otro.recibirAtaque(ataque);
 			else {
-				otro.recibirDanio(danio*2);
+				otro.recibirAtaque(ataque*2);
 				enfurecido--;
 			}
 			

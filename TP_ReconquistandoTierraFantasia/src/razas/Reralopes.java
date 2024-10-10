@@ -1,34 +1,52 @@
 package razas;
 
+import java.util.Random;
+
 public class Reralopes extends Unidad {
-	private int cantAtaquePotenciado = 0;
+	private int cantAtaquesPotenciados = 0;
 	
-	public Reralopes () {
+	public Reralopes (boolean aliado) {
+		nombre = "Rerapoles";
+		metodoAtaque = "Catapulta";
 		saludMaxima = 53;
 		salud = 53;
 		rangoMin = 5;
 		rangoMax = 46;
-		danio = 27;
+		ataque = 27;
+		esAliado = aliado;
 	}
 	
 	@Override
-	public void recibirDanio (int danio) {
-		super.recibirDanio(danio);
-		cantAtaquePotenciado = 0;
+	public void recibirAtaque (int danio) {
+		super.recibirAtaque(danio);
+		cantAtaquesPotenciados = 0;
 	}
 	
 	@Override
 	public void descansar () {
-		cantAtaquePotenciado = 3;
+		cantAtaquesPotenciados = 3;
 	}
 	
 	@Override
 	public void atacar (Unidad otro) {
-		if(cantAtaquePotenciado == 0)
-			otro.recibirDanio(danio);
-		else {
-			otro.recibirDanio(danio*2);
-			cantAtaquePotenciado--;
-		}
+		Random random = new Random();
+		
+		// Generar un número entre 0 y 3 (4 posibles valores)
+        int resultado = random.nextInt(4);
+
+        // Si el número es 0 o 1, el ataque falla (2 de cada 4 veces)
+        if (resultado == 0 || resultado == 1) {
+            // El ataque falla
+        } else {
+            // El ataque acierta
+        	if(cantAtaquesPotenciados == 0)
+    			otro.recibirAtaque(ataque);
+    		else {
+    			otro.recibirAtaque(ataque*2);
+    			cantAtaquesPotenciados--;
+    		}
+        }
+        
+		
 	}
 }
