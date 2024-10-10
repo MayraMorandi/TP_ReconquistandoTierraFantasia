@@ -1,0 +1,3 @@
+Es factible.
+Cantidad de guerreros vivos: 53
+Tiempo transcurrido: 5 dias
