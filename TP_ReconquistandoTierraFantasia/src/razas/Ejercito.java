@@ -4,28 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ejercito {
+	private List<Unidad> aliado = new ArrayList<>(),
+						propio = new ArrayList<>();
 
-	private String nombre;
-	private List<Unidad> unidades;
-
-	public Ejercito(String raza, int cantidadSoldados, boolean aliado) {
-		nombre = "Ejercito de " + raza;
-
-		List<Unidad> unidades = new ArrayList<>();
-
+	public Ejercito(String raza, int cantidadSoldados) {
 		for (int i = 0; i < cantidadSoldados; i++) {
 			switch (raza) {
 			case "Wrives":
-				unidades.add(new Wrives(aliado));
+				propio.add(new Wrives());
 				break;
 			case "Reralopes":
-				unidades.add(new Reralopes(aliado));
+				propio.add(new Reralopes());
 				break;
 			case "Radaiteran":
-				unidades.add(new Radaiteran(aliado));
+				propio.add(new Radaiteran());
 				break;
 			case "Nortaichian":
-				unidades.add(new Nortaichian(aliado));
+				propio.add(new Nortaichian());
 				break;
 			default:
 				break;
@@ -34,20 +29,19 @@ public class Ejercito {
 	}
 	
 	public void agregarGuerreros(String raza, int cantidadSoldados) {
-
 		for (int i = 0; i < cantidadSoldados; i++) {
 			switch (raza) {
 			case "Wrives":
-				unidades.add(new Wrives(true));
+				aliado.add(new Wrives());
 				break;
 			case "Reralopes":
-				unidades.add(new Reralopes(true));
+				aliado.add(new Reralopes());
 				break;
 			case "Radaiteran":
-				unidades.add(new Radaiteran(true));
+				aliado.add(new Radaiteran());
 				break;
 			case "Nortaichian":
-				unidades.add(new Nortaichian(true));
+				aliado.add(new Nortaichian());
 				break;
 			default:
 				break;
@@ -56,43 +50,71 @@ public class Ejercito {
 	}
 	
 	public Unidad primeroFormado() {
-		return unidades.get(0);
+		if(this.sinEjercitoAliado())
+			return propio.get(0);
+		
+		return aliado.get(0);
 	}
 	
 	public void atacar(Ejercito ejercito) {
-		
-		if(this.primeroFormado().isDesmayado()) {
-			//Ordenar array
-		}
-		
 		ejercito.recibirAtaque(this.primeroFormado().getAtaque());
 	}
 	
 	public void recibirAtaque(int danio) {
+		this.primeroFormado().recibirAtaque(danio);
 		
 		if(this.primeroFormado().isDesmayado()) {
-			//Ordenar array
+			if(this.sinEjercitoAliado())
+				propio.remove(0);
+			else
+				aliado.remove(0);
 		}
-		
-		this.primeroFormado().recibirAtaque(danio);
 	}
 	
 	public int cantidadGuerrerosVivos() {
-		int cantidadGuerrerosVivos = 0;
-		
-		for (int i = 0; i < unidades.size(); i++) {
-			if(!unidades.get(i).isDesmayado()) {
-				cantidadGuerrerosVivos++;
-			}
-				
-		}
-		return cantidadGuerrerosVivos;
+		return aliado.size() + propio.size();
 	}
 	
 	public void descansar() {
-		for (int i = 0; i < unidades.size(); i++) {
-			unidades.get(i).descansar();
+		for(Unidad u : aliado) {
+			u.descansar();
 		}
 	}
-
+	
+	public void reorganizar () {
+		Unidad aux;
+		
+		if(aliado.isEmpty()) {
+			aux = propio.remove(0);
+			propio.addLast(aux);;
+		}
+		else {
+			aux = aliado.remove(0);
+			aliado.addLast(aux);
+		}
+	}
+	
+	public boolean batalla (Ejercito otro) {
+		while(!this.sinEjercitoPropio()) {
+			this.atacar(otro);
+			
+			if(!otro.sinEjercitoPropio())
+				otro.atacar(this);
+			else
+				break;
+		}
+		
+		if(this.sinEjercitoPropio())
+			return false;
+		
+		return true;
+	}
+	
+	public boolean sinEjercitoPropio () {
+		return  this.propio.isEmpty();
+	}
+	
+	public boolean sinEjercitoAliado () {
+		return this.aliado.isEmpty();
+	}
 }

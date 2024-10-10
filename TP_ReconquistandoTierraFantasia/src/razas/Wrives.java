@@ -3,17 +3,16 @@ package razas;
 public class Wrives extends Unidad {
 
 	private int ataquesRealizados = 0;
-	private boolean fueAtacado;
+	private boolean fueAtacado = false;
 
-	public Wrives(boolean aliado) {
+	public Wrives() {
 		nombre = "Wrives";
-		metodoAtaque = "Mano a mano";
+		metodoAtaque = "Magia";
 		saludMaxima = 108;
 		salud = 108;
 		rangoMin = 14;
 		rangoMax = 28;
 		ataque = 113;
-		this.aliado = aliado;
 	}
 
 	@Override
@@ -32,7 +31,6 @@ public class Wrives extends Unidad {
 	@Override
 	public void atacar(Unidad otro) {
 		if (fueAtacado) {
-			if (salud < saludMaxima) {
 				if (ataquesRealizados < 2) {
 					otro.recibirAtaque(ataque);
 				} else {
@@ -41,7 +39,6 @@ public class Wrives extends Unidad {
 				}
 
 				ataquesRealizados++;
-			}
 		}
 	}
 }

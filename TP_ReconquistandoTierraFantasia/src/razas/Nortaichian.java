@@ -4,7 +4,7 @@ public class Nortaichian extends Unidad {
 	private int enfurecido = 0,
 				estadoPiedra = 0;
 	
-	public Nortaichian (boolean aliado) {
+	public Nortaichian () {
 		nombre = "Nortaichan";
 		metodoAtaque = "Arco";
 		saludMaxima = 66;
@@ -12,7 +12,6 @@ public class Nortaichian extends Unidad {
 		rangoMin = 16;
 		rangoMax = 22;
 		ataque = 18;
-		this.aliado = aliado;
 	}
 
 	@Override

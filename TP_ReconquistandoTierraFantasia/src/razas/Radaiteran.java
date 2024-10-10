@@ -3,7 +3,7 @@ package razas;
 public class Radaiteran extends Unidad {
 	private int cantAtaques = 0;
 	
-	public Radaiteran (boolean aliado) {
+	public Radaiteran () {
 		nombre = "Radaiteran";
 		metodoAtaque = "Shurikens";
 		saludMaxima = 36;
@@ -11,7 +11,6 @@ public class Radaiteran extends Unidad {
 		rangoMin = 17;
 		rangoMax = 41;
 		ataque = 56;
-		this.aliado = aliado;
 	}
 	
 	@Override

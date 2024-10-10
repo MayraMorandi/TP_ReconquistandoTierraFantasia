@@ -25,28 +25,13 @@ public class DatosDeSistema {
 	}
 
 
-	public void setMapa(int[][] mapa) {
-		this.mapa = mapa;
-	}
-
-
 	public int getCantidadPueblos() {
 		return cantidadPueblos;
 	}
 
 
-	public void setCantidadPueblos(int cantidadPueblos) {
-		this.cantidadPueblos = cantidadPueblos;
-	}
-
-
 	public List<Pueblo> getPueblos() {
 		return pueblos;
-	}
-
-
-	public void setPueblos(List<Pueblo> pueblos) {
-		this.pueblos = pueblos;
 	}
 
 

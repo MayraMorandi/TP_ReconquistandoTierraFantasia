@@ -9,7 +9,6 @@ public abstract class Unidad {
 				rangoMax,
 				ataque;
 	protected boolean desmayado = false;
-	protected boolean aliado;
 	
 	public void recibirAtaque (int danio) {
 		if(salud > danio)
@@ -67,14 +66,5 @@ public abstract class Unidad {
 	public boolean isDesmayado() {
 		return desmayado;
 	}
-
-	public boolean isAliado() {
-		return aliado;
-	}
-
-	public void setEsAliado(boolean esAliado) {
-		this.aliado = esAliado;
-	}
-	
 }
 
