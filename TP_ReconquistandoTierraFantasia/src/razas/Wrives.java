@@ -13,7 +13,7 @@ public class Wrives extends Unidad {
 		rangoMin = 14;
 		rangoMax = 28;
 		ataque = 113;
-		esAliado = aliado;
+		this.aliado = aliado;
 	}
 
 	@Override

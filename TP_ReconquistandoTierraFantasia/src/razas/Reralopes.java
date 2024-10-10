@@ -6,14 +6,14 @@ public class Reralopes extends Unidad {
 	private int cantAtaquesPotenciados = 0;
 	
 	public Reralopes (boolean aliado) {
-		nombre = "Rerapoles";
+		nombre = "Reralopes";
 		metodoAtaque = "Catapulta";
 		saludMaxima = 53;
 		salud = 53;
 		rangoMin = 5;
 		rangoMax = 46;
 		ataque = 27;
-		esAliado = aliado;
+		this.aliado = aliado;
 	}
 	
 	@Override

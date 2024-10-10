@@ -12,6 +12,7 @@ public class Nortaichian extends Unidad {
 		rangoMin = 16;
 		rangoMax = 22;
 		ataque = 18;
+		this.aliado = aliado;
 	}
 
 	@Override

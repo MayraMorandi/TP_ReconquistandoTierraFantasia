@@ -11,7 +11,7 @@ public class Radaiteran extends Unidad {
 		rangoMin = 17;
 		rangoMax = 41;
 		ataque = 56;
-		esAliado = aliado;
+		this.aliado = aliado;
 	}
 	
 	@Override
