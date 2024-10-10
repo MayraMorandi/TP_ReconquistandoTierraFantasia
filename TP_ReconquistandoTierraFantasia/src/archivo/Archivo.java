@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,22 +42,19 @@ public class Archivo {
 
 				// Leer el pueblo inicial y final
 				String[] datosInicioFinal = lector.nextLine().split(" -> ");
-				puebloInicial = Integer.parseInt(datosInicioFinal[0]);
-				puebloFinal = Integer.parseInt(datosInicioFinal[1]);
+				puebloInicial = Integer.parseInt(datosInicioFinal[0]) - 1;// Restar 1 para convertir a indice de matriz 
+				puebloFinal = Integer.parseInt(datosInicioFinal[1]) - 1;
 
 				matrizAdyacencia = new int[cantidadDePueblos][cantidadDePueblos];
 
-				// Inicializar la matriz de adyacencia con un valor que represente "sin
-				// conexión"
-				for (int i = 0; i < cantidadDePueblos; i++) {
-					Arrays.fill(matrizAdyacencia[i], 0);
-				}
+				// Inicializar la matriz de adyacencia con un valor que represente "sin conexion"
+				
 
 				// Leer las distancias entre pueblos y llenar la matriz de adyacencia
 				while (lector.hasNextLine()) {
 					String[] datosCamino = lector.nextLine().split(" ");
-					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a índice de matriz (0
-																		// basado)
+					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a indice de matriz 
+																		// (0 basado)
 					int destino = Integer.parseInt(datosCamino[1]) - 1;
 					int distancia = Integer.parseInt(datosCamino[2]);
 
@@ -67,7 +63,7 @@ public class Archivo {
 					matrizAdyacencia[destino][origen] = distancia; // Si es un grafo no dirigido, esto es necesario
 				}
 				
-				DatosDeSistema datos = new DatosDeSistema(matrizAdyacencia, cantidadDePueblos, pueblos, puebloInicial, puebloFinal);
+				DatosDeSistema datos = new DatosDeSistema(matrizAdyacencia, pueblos, puebloInicial, puebloFinal);
 				return datos;
 
 			} catch (FileNotFoundException e) {
@@ -75,7 +71,7 @@ public class Archivo {
 			}
 
 		} else {
-			throw new FileNotFoundException("El archivo no existe o no es un archivo válido.");
+			throw new FileNotFoundException("El archivo no existe o no es un archivo vï¿½lido.");
 		}
 
 	}
@@ -85,10 +81,10 @@ public class Archivo {
             if (resultado.isFactible()) {
                 // Escribir que es factible
                 writer.write("Es factible.\n");
-                // Escribir cuántos guerreros llegarían hasta el final
+                // Escribir cuï¿½ntos guerreros llegarï¿½an hasta el final
                 writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + "\n");
                 // Escribir el tiempo transcurrido
-                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " unidades de tiempo\n");
+                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " dias\n");
             } else {
                 // Escribir que no es factible
                 writer.write("No es factible.\n");

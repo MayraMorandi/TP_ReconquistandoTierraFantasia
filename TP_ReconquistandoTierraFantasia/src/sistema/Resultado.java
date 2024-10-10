@@ -26,17 +26,4 @@ public class Resultado {
     public int getTiempoTranscurrido() {
         return tiempoTranscurrido;
     }
-
-    // Setters
-    public void setFactible(boolean factible) {
-        this.factible = factible;
-    }
-
-    public void setCantidadGuerrerosVivos(int cantidadGuerrerosVivos) {
-        this.cantidadGuerrerosVivos = cantidadGuerrerosVivos;
-    }
-
-    public void setTiempoTranscurrido(int tiempoTranscurrido) {
-        this.tiempoTranscurrido = tiempoTranscurrido;
-    }
 }
