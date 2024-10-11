@@ -82,7 +82,7 @@ public class Archivo {
             	
                 writer.write("Esta misión es factible!\n");
                 
-                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + "guerreros\n");
+                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + " guerreros\n");
                 
                 writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " días\n");
             

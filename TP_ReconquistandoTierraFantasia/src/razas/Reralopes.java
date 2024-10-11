@@ -15,6 +15,10 @@ public class Reralopes extends Unidad {
 		ataque = 27;
 	}
 	
+	public int getCantAtaquesPotenciados () {
+		return cantAtaquesPotenciados;
+	}
+	
 	@Override
 	public void recibirAtaque (int danio) {
 		super.recibirAtaque(danio);
