@@ -30,10 +30,10 @@ public class Reralopes extends Unidad {
 	public void atacar (Unidad otro) {
 		Random random = new Random();
 		
-		// Generar un n�mero entre 0 y 3 (4 posibles valores)
+		// Se genera un numero entre 0 y 3 (4 posibles valores)
         int resultado = random.nextInt(4);
 
-        // Si el n�mero es 0 o 1, el ataque falla (2 de cada 4 veces)
+        // Si el numero es 0 o 1, el ataque falla (2 de cada 4 veces)
         if (resultado == 0 || resultado == 1) {
             // El ataque falla
         	if(cantAtaquesPotenciados != 0) {

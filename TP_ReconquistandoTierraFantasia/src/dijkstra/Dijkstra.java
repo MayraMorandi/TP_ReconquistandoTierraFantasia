@@ -1,4 +1,4 @@
-package Dijkstra;
+package dijkstra;
 import java.util.Arrays;
 
 public class Dijkstra {

@@ -14,7 +14,7 @@ import sistema.DatosDeSistema;
 public class Archivo {
 
 	public static DatosDeSistema leerDatosEntrada(String pathArchivo) throws FileNotFoundException, IOException {
-		// Seteo las variables que necesito
+		// Se setean las variables que necesito
 		File archivo = new File(pathArchivo);
 		int cantidadDePueblos;
 		int puebloInicial;
@@ -22,7 +22,7 @@ public class Archivo {
 		int[][] matrizAdyacencia;
 		List<Pueblo> pueblos = new ArrayList<>();
 
-		// Verificar si el archivo existe
+		// Se verifica si el archivo existe
 		if (archivo.exists() && archivo.isFile()) {
 
 			// Leer el archivo usando Scanner
@@ -79,15 +79,17 @@ public class Archivo {
 	public static void guardarResultado(String pathArchivo, Resultado resultado) {
 		try (FileWriter writer = new FileWriter(pathArchivo)) {
             if (resultado.isFactible()) {
-                // Escribir que es factible
-                writer.write("Es factible.\n");
-                // Escribir cu�ntos guerreros llegar�an hasta el final
-                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + "\n");
-                // Escribir el tiempo transcurrido
-                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " dias\n");
+            	
+                writer.write("Esta misión es factible!\n");
+                
+                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + "guerreros\n");
+                
+                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " días\n");
+            
             } else {
-                // Escribir que no es factible
-                writer.write("No es factible.\n");
+            	
+                writer.write("Esta misión no es factible.\n");
+                
             }
         } catch (IOException e) {
             System.out.println("Error al guardar el archivo: " + e.getMessage());
