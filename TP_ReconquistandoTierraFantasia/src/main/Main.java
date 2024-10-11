@@ -16,9 +16,9 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		DatosDeSistema entrada;
 		
-		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaDerrota.txt");
+		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaEjemplo.txt");
 		
-		Archivo.guardarResultado("src/resources/Salida/Resultado2.txt", 
+		Archivo.guardarResultado("src/resources/Salida/Resultado.txt", 
 				reconquistar(entrada));
 	}
 
@@ -27,8 +27,7 @@ public class Main {
 				resultado;
 		List<Pueblo> pueblos = entrada.getPueblos();
 		int inicio = entrada.getPuebloInicial(),
-			fin = entrada.getPuebloFinal(),
-			kilometros = 0;
+			fin = entrada.getPuebloFinal();
 		int[] camino;
 		Ejercito ejercito;
 		Pueblo aux;
@@ -44,15 +43,15 @@ public class Main {
 			return new Resultado(false, 0, 0);
 		}
 		
+		//Guardo la cantidad de kilometros a recorrer en el viaje
+		int kilometros = resultado[0][fin];
+		
 		//Se crea el ejercito del pueblo inicial
 		aux = pueblos.get(inicio);
 		ejercito = new Ejercito(aux.getRaza(), aux.getCantidadGuerreros());
 		
 		for(int i = 0; i < camino.length; i++) {
-			if(inicio != camino[i]) {
-				//Se suman los kilometros a recorrer desde el pueblo actual al siguiente
-				kilometros += resultado[0][camino[i]];
-					
+			if(inicio != camino[i]) {	
 				//Se obtienen el siguiente pueblo
 				aux = pueblos.get(camino[i]);
 				
@@ -66,6 +65,9 @@ public class Main {
 					if(!ejercito.batalla(new Ejercito(aux.getRaza(), aux.getCantidadGuerreros())))
 						return new Resultado(false, 0, 0);
 				}
+				
+				//Aumento los kilometros para que se tome como un dia entero
+				kilometros += 10;
 			}
 		}
 		
