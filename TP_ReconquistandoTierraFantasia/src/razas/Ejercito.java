@@ -61,15 +61,14 @@ public class Ejercito {
 	}
 	
 	//La primera unidad del ejercito ataca al otro ejercito
-	public void atacar(Ejercito otro) {
-		otro.recibirAtaque(this.primeroFormado().getAtaque());
+	private void atacar(Ejercito otro) {
+		this.primeroFormado().atacar(otro.primeroFormado());
+		otro.recibirAtaque();
 	}
 	
 	//La primera unidad recibe danio
 	//Si la unidad se desmaya, la remueve del ejercito
-	public void recibirAtaque(int danio) {
-		this.primeroFormado().recibirAtaque(danio);
-		
+	private void recibirAtaque() {
 		if(this.primeroFormado().isDesmayado()) {
 			if(this.sinEjercitoAliado())
 				propio.remove(0);

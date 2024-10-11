@@ -16,9 +16,9 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		DatosDeSistema entrada;
 		
-		entrada = Archivo.leerDatosEntrada("src/resources/EntradaEjemplo.txt");
+		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaDerrota.txt");
 		
-		Archivo.guardarResultado("src/resources/Resultado.txt", 
+		Archivo.guardarResultado("src/resources/Salida/Resultado2.txt", 
 				reconquistar(entrada));
 	}
 
@@ -48,22 +48,24 @@ public class Main {
 		aux = pueblos.get(inicio);
 		ejercito = new Ejercito(aux.getRaza(), aux.getCantidadGuerreros());
 		
-		for(int i = 1; i < camino.length; i++) {
-			//Se suman los kilometros a recorrer desde el pueblo actual al siguiente
-			kilometros += resultado[0][camino[i]];
+		for(int i = 0; i < camino.length; i++) {
+			if(inicio != camino[i]) {
+				//Se suman los kilometros a recorrer desde el pueblo actual al siguiente
+				kilometros += resultado[0][camino[i]];
+					
+				//Se obtienen el siguiente pueblo
+				aux = pueblos.get(camino[i]);
 				
-			//Se obtienen el siguiente pueblo
-			aux = pueblos.get(camino[i]);
-			
-			//Si es aliado, el ejercito descansa y se suma la mitad del pueblo
-			if(aux.getCondicion() == "aliado") {
-				ejercito.descansar();
-				ejercito.agregarGuerreros(aux.getRaza(), aux.getCantidadGuerreros() / 2);
-			}
-			//Si es enemigo, el ejercito batalla contra el pueblo
-			else {
-				if(!ejercito.batalla(new Ejercito(aux.getRaza(), aux.getCantidadGuerreros())))
-					return new Resultado(false, 0, 0);
+				//Si es aliado, el ejercito descansa y se suma la mitad del pueblo
+				if(aux.getCondicion().compareTo("aliado") == 0) {
+					ejercito.descansar();
+					ejercito.agregarGuerreros(aux.getRaza(), aux.getCantidadGuerreros() / 2);
+				}
+				//Si es enemigo, el ejercito batalla contra el pueblo
+				else {
+					if(!ejercito.batalla(new Ejercito(aux.getRaza(), aux.getCantidadGuerreros())))
+						return new Resultado(false, 0, 0);
+				}
 			}
 		}
 		
