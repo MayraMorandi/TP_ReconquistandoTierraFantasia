@@ -79,14 +79,6 @@ public class Archivo {
 	public static void guardarResultado(String pathArchivo, Resultado resultado) {
 		try (FileWriter writer = new FileWriter(pathArchivo)) {
             if (resultado.isFactible()) {
-<<<<<<< Updated upstream
-                // Escribir que es factible
-                writer.write("Es factible.\n");
-                // Escribir cu�ntos guerreros llegar�an hasta el final
-                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + "\n");
-                // Escribir el tiempo transcurrido
-                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " dias\n");
-=======
             	
                 writer.write("Esta misión es factible!\n");
                 
@@ -94,7 +86,6 @@ public class Archivo {
                 
                 writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " días\n");
             
->>>>>>> Stashed changes
             } else {
             	
                 writer.write("Esta misión no es factible.\n");
