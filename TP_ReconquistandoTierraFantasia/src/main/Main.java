@@ -28,7 +28,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		int opcion = 0;
 		
-		String[] archivos = {"EntradaEjemplo.txt", "EntradaSinCamino.txt", "Entrada5Pueblos.txt"};
+		String[] archivos = {"EntradaEjemplo.txt", "EntradaSinCamino.txt", "Entrada5Pueblos.txt", "Entrada6Pueblos.txt", "Entrada8Pueblos.txt", "Entrada10Pueblos.txt"};
 		
 		System.out.println("Reconquistando la Tierra de Fantasia");
 		
@@ -81,6 +81,11 @@ public class Main {
 		
 		//Se busca el camino mas corto entre el pueblo inicial al pueblo final
 		camino = Dijkstra.devolverCamino(resultado[1], fin);
+
+		if(camino != null) {
+			for(int i=0; i<camino.length; i++) 
+			System.out.println("pueblo: " + (camino[i]+1));
+		}
 		
 		//Se comprueba si hay un camino entre los dos pueblos
 		if(camino == null) {
