@@ -5,7 +5,7 @@ public class Nortaichian extends Unidad {
 				estadoPiedra = 0;
 	
 	public Nortaichian () {
-		nombre = "Nortaichan";
+		nombre = "Nortaichian";
 		metodoAtaque = "Arco";
 		saludMaxima = 66;
 		salud = 66;
