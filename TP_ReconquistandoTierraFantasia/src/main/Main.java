@@ -3,6 +3,7 @@ package main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 import sistema.DatosDeSistema;
 import sistema.Pueblo;
@@ -16,10 +17,53 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		DatosDeSistema entrada;
 		
-		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaEjemplo.txt");
+//		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaEjemplo.txt");
+//		
+//		Archivo.guardarResultado("src/resources/Salida/Resultado.txt", 
+//				reconquistar(entrada));
 		
-		Archivo.guardarResultado("src/resources/Salida/Resultado.txt", 
-				reconquistar(entrada));
+		
+		// Menu para seleccionar archivo
+		
+		Scanner scanner = new Scanner(System.in);
+		int opcion = 0;
+		
+		String[] archivos = {"EntradaEjemplo.txt", "EntradaSinCamino.txt", "Entrada5Pueblos.txt"};
+		
+		System.out.println("Reconquistando la Tierra de Fantasia");
+		
+		do {
+			
+			System.out.println("\nSeleccione un archivo: ");
+			for(int i=0; i<archivos.length; i++) {
+				System.out.println((i+1) + ". " + archivos[i]);
+			}
+			
+			System.out.println("0. Salir\n");
+			
+			opcion = scanner.nextInt();
+			scanner.nextLine();
+			
+			if(opcion > 0 && opcion <= archivos.length) {
+				
+				entrada = Archivo.leerDatosEntrada("src/resources/Entrada/" + archivos[opcion-1]);
+				Resultado res = reconquistar(entrada);
+				Archivo.guardarResultado("src/resources/Salida/" + archivos[opcion-1], res);
+				
+				System.out.println("\nSe proceso el " + archivos[opcion-1]);
+				
+				System.out.println("\nResultado:");
+				res.getResultado();
+				
+			} else if (opcion != 0) {
+                System.out.println("Opción no válida. Por favor, ingrese una opción entre 1 y " + archivos.length + ", o 0 para salir.");
+            }
+			
+		} while (opcion != 0);
+		
+		System.out.println("Fin de programa");
+		scanner.close();
+		
 	}
 
 	public static Resultado reconquistar (DatosDeSistema entrada) {
