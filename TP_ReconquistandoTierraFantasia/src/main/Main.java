@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		// Menu para seleccionar archivo
-		DatosDeSistema entrada;
+		DatosDeSistema entrada
 		Scanner scanner = new Scanner(System.in);
 		int opcion = 0;
 		
@@ -74,7 +74,6 @@ public class Main {
 		
 		//Se busca el camino mas corto entre el pueblo inicial al pueblo final
 		camino = Dijkstra.devolverCamino(resultado[1], fin);
-
 		
 		//Se comprueba si hay un camino entre los dos pueblos
 		if(camino == null) {
