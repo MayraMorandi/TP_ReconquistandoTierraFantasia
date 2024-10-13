@@ -2,7 +2,9 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import sistema.DatosDeSistema;
 import sistema.Pueblo;
@@ -14,12 +16,47 @@ import razas.Ejercito;
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
+		// Menu para seleccionar archivo
 		DatosDeSistema entrada;
+		Scanner scanner = new Scanner(System.in);
+		int opcion = 0;
 		
-		entrada = Archivo.leerDatosEntrada("src/resources/Entrada/EntradaEjemplo.txt");
+		String[] archivos = {"EntradaEjemplo.txt", "EntradaSinCamino.txt", "Entrada5Pueblos.txt", "Entrada6Pueblos.txt", "Entrada8Pueblos.txt", "Entrada10Pueblos.txt"};
 		
-		Archivo.guardarResultado("src/resources/Salida/Resultado.txt", 
-				reconquistar(entrada));
+		System.out.println("Reconquistando la Tierra de Fantasia");
+		
+		do {
+			
+			System.out.println("\nSeleccione un archivo: ");
+			for(int i=0; i<archivos.length; i++) {
+				System.out.println((i+1) + ". " + archivos[i]);
+			}
+			
+			System.out.println("0. Salir\n");
+			
+			opcion = scanner.nextInt();
+			scanner.nextLine();
+			
+			if(opcion > 0 && opcion <= archivos.length) {
+				
+				entrada = Archivo.leerDatosEntrada("src/resources/Entrada/" + archivos[opcion-1]);
+				Resultado res = reconquistar(entrada);
+				Archivo.guardarResultado("src/resources/Salida/" + archivos[opcion-1], res);
+				
+				System.out.println("\nSe proceso el " + archivos[opcion-1]);
+				
+				System.out.println("\nResultado:");
+				res.getResultado();
+				
+			} else if (opcion != 0) {
+                System.out.println("Opción no válida. Por favor, ingrese una opción entre 1 y " + archivos.length + ", o 0 para salir.");
+            }
+			
+		} while (opcion != 0);
+		
+		System.out.println("Fin de programa");
+		scanner.close();
+		
 	}
 
 	public static Resultado reconquistar (DatosDeSistema entrada) {
@@ -37,11 +74,16 @@ public class Main {
 		
 		//Se busca el camino mas corto entre el pueblo inicial al pueblo final
 		camino = Dijkstra.devolverCamino(resultado[1], fin);
+
 		
 		//Se comprueba si hay un camino entre los dos pueblos
 		if(camino == null) {
+			System.out.println("No existe un camino que conecte el pueblo inicial con el final");
 			return new Resultado(false, 0, 0);
 		}
+		
+		System.out.println("\nPueblos por los que pasa nuestro ejercito:");
+		System.out.println(Arrays.toString(camino));
 		
 		//Guardo la cantidad de kilometros a recorrer en el viaje
 		int kilometros = resultado[0][fin];
@@ -62,8 +104,10 @@ public class Main {
 				}
 				//Si es enemigo, el ejercito batalla contra el pueblo
 				else {
-					if(!ejercito.batalla(new Ejercito(aux.getRaza(), aux.getCantidadGuerreros())))
+					if(!ejercito.batalla(new Ejercito(aux.getRaza(), aux.getCantidadGuerreros()))) {
+						System.out.println("Nuestro ejercito perdio la batalla contra el pueblo " + aux.getId());
 						return new Resultado(false, 0, 0);
+					}
 				}
 				
 				//Aumento los kilometros para que se tome como un dia entero

@@ -104,4 +104,28 @@ public class EjercitoTest {
 		
 		assertEquals(108, ejercito.primeroFormado().getSalud());
 	}
+	
+	@Test
+	//cuando el ejercito descansa, todas las unidades descansan
+	public void descansar() {
+		Ejercito ejercito = new Ejercito("Wrives", 1);
+		Ejercito enemigo = new Ejercito("Radaiteran", 2);
+		
+		ejercito.agregarGuerreros("Wrives", 1);
+		
+		//Aumenta la salud de los Wrives en 50
+		ejercito.descansar();
+		
+		assertEquals(158, ejercito.primeroFormado().getSalud());
+		
+		//El Wrives aliado muere, el ejercito enemigo pierde
+		//el Wrives propio pierde 124 de salud, porque el Radaiteran lo ataca una vez cuando antes ya hizo un ataque
+		//(56 + 3) * 2 = 118
+		ejercito.batalla(enemigo);
+		
+		System.out.println(ejercito.primeroFormado().getNombre());
+		//La vida del Wrives propio inicia en 108, sube 50 y pierde 118
+		//108 + 50 - 118 = 40
+		assertEquals(40, ejercito.primeroFormado().getSalud());
+	}
 }

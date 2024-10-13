@@ -26,4 +26,14 @@ public class Resultado {
     public int getTiempoTranscurrido() {
         return tiempoTranscurrido;
     }
+    
+    public void getResultado() {
+    	if(factible) {
+    		System.out.println("Esta misión es factible!");
+    		System.out.println("Cantidad de guerreros vivos: " + cantidadGuerrerosVivos + " guerreros");
+    		System.out.println("Tiempo transcurrido: " + tiempoTranscurrido + " días");
+    	}
+    	else
+    		System.out.println("Esta misión NO es factible!");
+    }
 }

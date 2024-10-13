@@ -84,15 +84,12 @@ public class Ejercito {
 	
 	//Cada unidad del ejercito descansa
 	public void descansar() {
-		if(this.sinEjercitoAliado()) {
-			for(Unidad u : propio) {
-				u.descansar();
-			}
+		for(Unidad u : propio) {
+			u.descansar();
 		}
-		else {
-			for(Unidad u : aliado) {
-				u.descansar();
-			}
+		
+		for(Unidad u : aliado) {
+			u.descansar();
 		}
 	}
 	
