@@ -3,23 +3,19 @@ package razas;
 public abstract class Unidad {
 	protected String nombre;
 	protected String metodoAtaque;
-	protected int saludMaxima,
-				salud,
-				rangoMin,
-				rangoMax,
-				ataque;
+	protected int saludMaxima, salud, rangoMin, rangoMax, ataque;
 	protected boolean desmayado = false;
-	
-	public void recibirAtaque (int danio) {
-		if(salud > danio)
+
+	public void recibirAtaque(int danio) {
+		if (salud > danio)
 			salud -= danio;
 		else
 			desmayarse();
 	}
-	
+
 	public abstract void descansar();
-	
-	public void atacar (Unidad otro) {
+
+	public void atacar(Unidad otro) {
 		otro.recibirAtaque(ataque);
 	}
 
@@ -67,4 +63,3 @@ public abstract class Unidad {
 		return desmayado;
 	}
 }
-

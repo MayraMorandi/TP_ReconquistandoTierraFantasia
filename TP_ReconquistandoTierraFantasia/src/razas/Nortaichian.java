@@ -1,10 +1,9 @@
 package razas;
 
 public class Nortaichian extends Unidad {
-	private int enfurecido = 0,
-				estadoPiedra = 0;
-	
-	public Nortaichian () {
+	private int enfurecido = 0, estadoPiedra = 0;
+
+	public Nortaichian() {
 		nombre = "Nortaichian";
 		metodoAtaque = "Arco";
 		saludMaxima = 66;
@@ -15,39 +14,38 @@ public class Nortaichian extends Unidad {
 	}
 
 	@Override
-	public void recibirAtaque (int danio) {
-		if(estadoPiedra == 0)
+	public void recibirAtaque(int danio) {
+		if (estadoPiedra == 0)
 			super.recibirAtaque(danio);
 		else {
-			super.recibirAtaque(danio/2);
+			super.recibirAtaque(danio / 2);
 			estadoPiedra--;
 		}
-			
+
 		enfurecido = 2;
 	}
-	
+
 	@Override
-	public void descansar () {
+	public void descansar() {
 		salud = saludMaxima;
 		estadoPiedra = 2;
 	}
-	
+
 	@Override
-	public void atacar (Unidad otro) {
-		if(estadoPiedra == 0) {
-			if(enfurecido == 0)
+	public void atacar(Unidad otro) {
+		if (estadoPiedra == 0) {
+			if (enfurecido == 0)
 				otro.recibirAtaque(ataque);
 			else {
-				otro.recibirAtaque(ataque*2);
+				otro.recibirAtaque(ataque * 2);
 				enfurecido--;
 			}
-			
+
 			salud += salud * 4 / 100;
-			
-			if(salud > saludMaxima)
+
+			if (salud > saludMaxima)
 				salud = saludMaxima;
-		}
-		else
+		} else
 			estadoPiedra--;
 	}
 }

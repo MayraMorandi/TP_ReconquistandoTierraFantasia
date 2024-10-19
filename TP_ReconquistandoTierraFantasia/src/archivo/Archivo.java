@@ -42,18 +42,18 @@ public class Archivo {
 
 				// Leer el pueblo inicial y final
 				String[] datosInicioFinal = lector.nextLine().split(" -> ");
-				puebloInicial = Integer.parseInt(datosInicioFinal[0]) - 1;// Restar 1 para convertir a indice de matriz 
+				puebloInicial = Integer.parseInt(datosInicioFinal[0]) - 1;// Restar 1 para convertir a indice de matriz
 				puebloFinal = Integer.parseInt(datosInicioFinal[1]) - 1;
 
 				matrizAdyacencia = new int[cantidadDePueblos][cantidadDePueblos];
 
-				// Inicializar la matriz de adyacencia con un valor que represente "sin conexion"
-				
+				// Inicializar la matriz de adyacencia con un valor que represente "sin
+				// conexion"
 
 				// Leer las distancias entre pueblos y llenar la matriz de adyacencia
 				while (lector.hasNextLine()) {
 					String[] datosCamino = lector.nextLine().split(" ");
-					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a indice de matriz 
+					int origen = Integer.parseInt(datosCamino[0]) - 1; // Restar 1 para convertir a indice de matriz
 																		// (0 basado)
 					int destino = Integer.parseInt(datosCamino[1]) - 1;
 					int distancia = Integer.parseInt(datosCamino[2]);
@@ -62,7 +62,7 @@ public class Archivo {
 					matrizAdyacencia[origen][destino] = distancia;
 					matrizAdyacencia[destino][origen] = distancia; // Si es un grafo no dirigido, esto es necesario
 				}
-				
+
 				DatosDeSistema datos = new DatosDeSistema(matrizAdyacencia, pueblos, puebloInicial, puebloFinal);
 				return datos;
 
@@ -75,25 +75,25 @@ public class Archivo {
 		}
 
 	}
-	
+
 	public static void guardarResultado(String pathArchivo, Resultado resultado) {
 		try (FileWriter writer = new FileWriter(pathArchivo)) {
-            if (resultado.isFactible()) {
-            	
-                writer.write("Esta misión es factible!\n");
-                
-                writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + " guerreros\n");
-                
-                writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " días\n");
-            
-            } else {
-            	
-                writer.write("Esta misión no es factible.\n");
-                
-            }
-        } catch (IOException e) {
-            System.out.println("Error al guardar el archivo: " + e.getMessage());
-        }
-    }
+			if (resultado.isFactible()) {
+
+				writer.write("Esta misión es factible!\n");
+
+				writer.write("Cantidad de guerreros vivos: " + resultado.getCantidadGuerrerosVivos() + " guerreros\n");
+
+				writer.write("Tiempo transcurrido: " + resultado.getTiempoTranscurrido() + " días\n");
+
+			} else {
+
+				writer.write("Esta misión no es factible.\n");
+
+			}
+		} catch (IOException e) {
+			System.out.println("Error al guardar el archivo: " + e.getMessage());
+		}
+	}
 
 }

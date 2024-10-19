@@ -31,13 +31,13 @@ public class Wrives extends Unidad {
 	@Override
 	public void atacar(Unidad otro) {
 		if (fueAtacado) {
-				if (ataquesRealizados < 2) {
-					otro.recibirAtaque(ataque);
-					ataquesRealizados++;
-				} else {
-					otro.recibirAtaque(ataque * 2);
-					ataquesRealizados = 0;
-				}
+			if (ataquesRealizados < 2) {
+				otro.recibirAtaque(ataque);
+				ataquesRealizados++;
+			} else {
+				otro.recibirAtaque(ataque * 2);
+				ataquesRealizados = 0;
+			}
 		}
 	}
 }
