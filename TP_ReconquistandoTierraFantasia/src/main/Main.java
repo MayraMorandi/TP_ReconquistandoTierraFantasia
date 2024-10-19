@@ -17,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		// Menu para seleccionar archivo
-		DatosDeSistema entrada
+		DatosDeSistema entrada;
 		Scanner scanner = new Scanner(System.in);
 		int opcion = 0;
 		
