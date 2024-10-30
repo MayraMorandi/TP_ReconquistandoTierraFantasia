@@ -30,8 +30,7 @@ public class Reralopes extends Unidad {
 
 	@Override
 	public void atacar(Unidad otro) {
-		// Si la cantidad de ataques realizados es 1 o 3, el ataque falla (2 de cada 4
-		// veces)
+		// Si la cantidad de ataques realizados es 1 o 3, el ataque falla (2 de cada 4 veces)
 		if (cantAtaques == 1 || cantAtaques == 3) {
 			// El ataque falla
 			if (cantAtaquesPotenciados != 0) {

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Dijkstra {
 
 	public static int[][] resolver(int[][] adyacencias, int inicial) {
-		// Valido que la matriz de adyacencias sea cuadrada
+		// Se valida que la matriz de adyacencias sea cuadrada
 		if (!esCuadrada(adyacencias)) {
 			throw new IllegalArgumentException("La matriz de adyacencias debe ser cuadrada");
 		}
@@ -16,12 +16,11 @@ public class Dijkstra {
 		int[] predecesores = new int[tamano];
 		boolean[] visitados = new boolean[tamano];
 
-		// Inicializar distancias a infinito y predecesores
+		// Se inicializan distancias a infinito y predecesores
 		Arrays.fill(distancias, Integer.MAX_VALUE);
 		Arrays.fill(predecesores, -1);
 
-		// Para todo nodo directamente conectado al nodo inicial le pongo el valor del
-		// camino directo
+		// Para todo nodo directamente conectado al nodo inicial le pongo el valor del camino directo
 		for (int i = 0; i < tamano; i++) {
 			if (adyacencias[inicial][i] != 0) {
 				distancias[i] = adyacencias[inicial][i];
@@ -40,7 +39,7 @@ public class Dijkstra {
 
 			// Si no se encuentra ningun nodo alcanzable, romper el ciclo
 			if (u == -1) {
-				break; // Esto ocurre cuando no hay m�s nodos alcanzables
+				break; // Esto ocurre cuando no hay mas nodos alcanzables
 			}
 
 			// Marcar el nodo como visitado
@@ -101,8 +100,7 @@ public class Dijkstra {
 		// Obtener el numero de filas
 		int numFilas = matriz.length;
 
-		// Verificar que cada fila tenga la misma cantidad de columnas que el numero de
-		// filas
+		// Verificar que cada fila tenga la misma cantidad de columnas que el numero de filas
 		for (int[] fila : matriz) {
 			if (fila.length != numFilas) {
 				return false; // La matriz no es cuadrada
@@ -112,7 +110,7 @@ public class Dijkstra {
 		return true; // La matriz es cuadrada
 	}
 
-	// devuelve el camino desde el nodo inicial hasta el nodo final mandado
+	// Devuelve el camino desde el nodo inicial hasta el nodo final mandado
 	public static int[] devolverCamino(int[] v, int nodo) {
 		int[] camino;
 		int[] aux = new int[v.length];

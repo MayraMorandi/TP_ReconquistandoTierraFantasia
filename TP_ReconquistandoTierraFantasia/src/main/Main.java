@@ -43,7 +43,7 @@ public class Main {
 				Resultado res = reconquistar(entrada);
 				Archivo.guardarResultado("src/resources/Salida/" + archivos[opcion - 1], res);
 
-				System.out.println("\nSe proceso el " + archivos[opcion - 1]);
+				System.out.println("\nSe procesó el archivo: \n" + archivos[opcion - 1]);
 
 				System.out.println("\nResultado:");
 				res.getResultado();
@@ -55,7 +55,7 @@ public class Main {
 
 		} while (opcion != 0);
 
-		System.out.println("Fin de programa");
+		System.out.println("Fin de programa.");
 		scanner.close();
 
 	}
@@ -76,14 +76,14 @@ public class Main {
 
 		// Se comprueba si hay un camino entre los dos pueblos
 		if (camino == null) {
-			System.out.println("No existe un camino que conecte el pueblo inicial con el final");
+			System.out.println("No existe un camino que conecte el pueblo inicial con el final.");
 			return new Resultado(false, 0, 0);
 		}
 
-		System.out.println("\nPueblos por los que pasa nuestro ejercito:");
+		System.out.println("\nPueblos por los que pasa nuestro ejército:");
 		System.out.println(Arrays.toString(camino));
 
-		// Guardo la cantidad de kilometros a recorrer en el viaje
+		// Se guarda la cantidad de kilometros a recorrer en el viaje
 		int kilometros = resultado[0][fin];
 
 		// Se crea el ejercito del pueblo inicial
@@ -108,7 +108,7 @@ public class Main {
 					}
 				}
 
-				// Aumento los kilometros para que se tome como un dia entero
+				// Se aumenta los kilometros para que se tome como un dia entero
 				kilometros += 10;
 			}
 		}
@@ -119,8 +119,7 @@ public class Main {
 		}
 
 		// Si los kilometros recorridos no son multiplo de 10,
-		// Utilizo la funcion Math.ceil porque siempre redondea hacia arriba aunque sea
-		// multiplo de 10
+		// Utilizo la funcion Math.ceil porque siempre redondea hacia arriba aunque sea multiplo de 10
 		return new Resultado(true, ejercito.cantidadGuerrerosVivos(), (int) Math.ceil((double) kilometros / 10));
 	}
 }

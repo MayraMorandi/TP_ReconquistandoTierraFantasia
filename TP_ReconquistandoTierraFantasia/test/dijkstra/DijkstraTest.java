@@ -7,8 +7,7 @@ import org.junit.Test;
 public class DijkstraTest {
 
 	@Test
-	// Devuelve un vector con el coste de llegar de un nodo a otro del camino mas
-	// corto
+	// Devuelve un vector con el coste de llegar de un nodo a otro del camino mas corto
 	// desde un nodo al resto y los predecesores del nodo de la posicion de vector
 	public void resolver() {
 		int[][] grafo = { { 0, 7, 3, 0 }, { 0, 0, 0, 2 }, { 0, 2, 0, 8 }, { 0, 0, 0, 0 } }, resultado,

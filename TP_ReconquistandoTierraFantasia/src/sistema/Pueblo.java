@@ -12,7 +12,6 @@ public class Pueblo {
 		this.condicion = condicion;
 	}
 
-	// Getters
 	public int getCantidadGuerreros() {
 		return cantidadGuerreros;
 	}
@@ -25,7 +24,6 @@ public class Pueblo {
 		return condicion;
 	}
 
-	// Setters
 	public void setCantidadGuerreros(int cantidadGuerreros) {
 		this.cantidadGuerreros = cantidadGuerreros;
 	}
