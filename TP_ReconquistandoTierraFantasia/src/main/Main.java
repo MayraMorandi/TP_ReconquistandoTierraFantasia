@@ -3,7 +3,6 @@ package main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import sistema.DatosDeSistema;
@@ -28,7 +27,6 @@ public class Main {
 		System.out.println("Reconquistando la Tierra de Fantasia");
 
 		do {
-
 			System.out.println("\nSeleccione un archivo: ");
 			for (int i = 0; i < archivos.length; i++) {
 				System.out.println((i + 1) + ". " + archivos[i]);
