@@ -2,8 +2,8 @@ package razas;
 
 public class Radaiteran extends Unidad {
 	private int cantAtaques = 0;
-	
-	public Radaiteran () {
+
+	public Radaiteran() {
 		nombre = "Radaiteran";
 		metodoAtaque = "Shurikens";
 		saludMaxima = 36;
@@ -12,12 +12,13 @@ public class Radaiteran extends Unidad {
 		rangoMax = 41;
 		ataque = 56;
 	}
-	
+
 	@Override
-	public void descansar() {};
-	
+	public void descansar() {
+	};
+
 	@Override
-	public void atacar (Unidad otro) {
+	public void atacar(Unidad otro) {
 		otro.recibirAtaque(ataque + 3 * cantAtaques);
 		cantAtaques++;
 	}

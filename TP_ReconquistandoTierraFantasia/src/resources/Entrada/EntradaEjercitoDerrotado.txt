@@ -1,0 +1,5 @@
+2
+2 100 Wrives propio
+1 1000 Radaiteran enemigo
+2 -> 1
+1 2 2
