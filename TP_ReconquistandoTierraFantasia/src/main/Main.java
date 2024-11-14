@@ -15,22 +15,22 @@ import razas.Ejercito;
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// Menu para seleccionar archivo
 		DatosDeSistema entrada;
 		Scanner scanner = new Scanner(System.in);
 		int opcion = 0;
 
+		//Archivos de entrada de ejemplo
 		String[] archivos = { "EntradaEjemplo.txt", "EntradaSinCamino.txt", "Entrada5Pueblos.txt",
 				"Entrada6Pueblos.txt", "Entrada8Pueblos.txt", "Entrada10Pueblos.txt", "EntradaEjercitoDerrotado.txt",
 				"EntradaCaminoCortoNoFactible.txt"};
 
+		// Menu para seleccionar archivo
 		System.out.println("Reconquistando la Tierra de Fantasia");
 
 		do {
 			System.out.println("\nSeleccione un archivo: ");
-			for (int i = 0; i < archivos.length; i++) {
+			for (int i = 0; i < archivos.length; i++)
 				System.out.println((i + 1) + ". " + archivos[i]);
-			}
 
 			System.out.println("0. Salir\n");
 
@@ -48,10 +48,9 @@ public class Main {
 				System.out.println("\nResultado:");
 				res.getResultado();
 
-			} else if (opcion != 0) {
+			} else if (opcion != 0)
 				System.out.println("Opción no válida. Por favor, ingrese una opción entre 1 y " + archivos.length
 						+ ", o 0 para salir.");
-			}
 
 		} while (opcion != 0);
 
@@ -60,6 +59,7 @@ public class Main {
 
 	}
 
+	//Metodo que devuelve si el viaje de la entrada es factible
 	public static Resultado reconquistar(DatosDeSistema entrada) {
 		int[][] mapa = entrada.getMapa(), resultado;
 		Pueblo[] pueblos = entrada.getPueblos();
@@ -80,6 +80,7 @@ public class Main {
 			return new Resultado(false, 0, 0);
 		}
 
+		//muestra los pueblos por los que pasa nuestro ejercito, pero el valor de los pueblos se les resta 1
 		System.out.println("\nPueblos por los que pasa nuestro ejercito:");
 		System.out.println(Arrays.toString(camino));
 
@@ -90,8 +91,7 @@ public class Main {
 		aux = pueblos[inicio];
 		ejercito = new Ejercito(aux.getRaza(), aux.getCantidadGuerreros());
 
-		for (int i = 0; i < camino.length; i++) {
-			if (inicio != camino[i]) {
+		for (int i = 1; i < camino.length; i++) {
 				// Se obtienen el siguiente pueblo
 				aux = pueblos[camino[i]];
 
@@ -110,7 +110,6 @@ public class Main {
 
 				// Aumento los kilometros para que se tome como un dia entero
 				kilometros += 10;
-			}
 		}
 
 		// Si los kilometros recorridos son multiplo de 10, devuelvo la division
@@ -119,8 +118,7 @@ public class Main {
 		}
 
 		// Si los kilometros recorridos no son multiplo de 10,
-		// Utilizo la funcion Math.ceil porque siempre redondea hacia arriba aunque sea
-		// multiplo de 10
+		// Utilizo la funcion Math.ceil porque siempre redondea hacia arriba aunque sea multiplo de 10
 		return new Resultado(true, ejercito.cantidadGuerrerosVivos(), (int) Math.ceil((double) kilometros / 10));
 	}
 }

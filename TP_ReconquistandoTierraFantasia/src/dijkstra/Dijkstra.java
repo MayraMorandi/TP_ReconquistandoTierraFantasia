@@ -88,26 +88,24 @@ public class Dijkstra {
 				minIndex = i;
 			}
 		}
+		
 		return minIndex;
 	}
 
 	// Metodo para validar si una matriz es cuadrada
 	private static boolean esCuadrada(int[][] matriz) {
 		// Verificar si la matriz no es nula y tiene al menos una fila
-		if (matriz == null || matriz.length == 0) {
+		if (matriz == null || matriz.length == 0)
 			return false;
-		}
 
 		// Obtener el numero de filas
 		int numFilas = matriz.length;
 
 		// Verificar que cada fila tenga la misma cantidad de columnas que el numero de
 		// filas
-		for (int[] fila : matriz) {
-			if (fila.length != numFilas) {
+		for (int[] fila : matriz)
+			if (fila.length != numFilas)
 				return false; // La matriz no es cuadrada
-			}
-		}
 
 		return true; // La matriz es cuadrada
 	}

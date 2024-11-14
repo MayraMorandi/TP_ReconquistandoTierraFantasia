@@ -83,13 +83,11 @@ public class Ejercito {
 
 	// Cada unidad del ejercito descansa
 	public void descansar() {
-		for (Unidad u : propio) {
+		for (Unidad u : propio)
 			u.descansar();
-		}
 
-		for (Unidad u : aliado) {
+		for (Unidad u : aliado)
 			u.descansar();
-		}
 	}
 
 	//Si la primera unidad esta herida, se manda al final del ejercito propio
